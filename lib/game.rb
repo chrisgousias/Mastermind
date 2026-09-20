@@ -1,7 +1,7 @@
 require_relative 'info'
 
 class Game 
-  COLORS = ["red", "purple", "blue", "green", "yellow", "orange"]
+  COLORS = ["cyan", "magenta", "blue", "green", "yellow", "grey"]
 
   attr_accessor :guesses_info, :turn
 

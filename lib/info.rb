@@ -1,8 +1,19 @@
+require 'colorize'
+
 module Info 
+  # def self.show_board(guesses_info)
+  #   guesses_info.each do |element|
+  #     puts "Turn: #{element[:turn]}/12: Your guess #{element[:guess]} - Exact matches: #{element[:exact_matches]}, Color matches: #{element[:color_matches]}"
+  #     puts "Available colors: 'CYAN', 'MAGENTA', 'BLUE', 'GREEN', 'YELLOW', 'GREY'"
+  #   end
+  # end
+
   def self.show_board(guesses_info)
     guesses_info.each do |element|
-      puts "Turn: #{element[:turn]}/12: Your guess #{element[:guess]} - Exact matches: #{element[:exact_matches]}, Color matches: #{element[:color_matches]}"
-      puts "Available colors: 'RED', 'PURPLE', 'BLUE', 'GREEN', 'YELLOW', 'ORANGE'"
+      guess_pegs = element[:guess].map { |color| "\u25CF".colorize(color.to_sym)}
+      exact_matches = Array.new(element[:exact_matches]) { "\u25CF".colorize(:light_red) }
+      color_matches = Array.new(element[:color_matches]) { "\u25CF".colorize(:light_white) }
+      puts (guess_pegs + [" | "] + exact_matches + color_matches).join(" ")
     end
   end
 
@@ -12,7 +23,7 @@ module Info
 The codemaker is the computer and that means that
 you must find the secret code that will be randomly
 generated from the available 6 colors. The colors are:
-'RED', 'PURPLE', 'BLUE', 'GREEN', 'YELLOW' and 'ORANGE'
+'CYAN', 'MAGENTA', 'BLUE', 'GREEN', 'YELLOW', 'GREY'
 The game consists of 12 turns and after each turn there will
 be information about the code you selected in the form of:
 'Turn ?/12: Your guess [your code] - Exact matches: ?, Color matches: ?'
