@@ -2,19 +2,19 @@ require 'colorize'
 
 module Info 
 
-    def self.rules
-    puts "---------- MASTERMIND GAME ----------"
-    puts "This game consists of a codemaker and a codebreaker.
-The codemaker is the computer and that means that
-you must find the secret code that will be randomly
-generated from the available 6 colors. The colors are:
-'CYAN', 'MAGENTA', 'BLUE', 'GREEN', 'YELLOW', 'GREY'
-The game consists of 12 turns and after each turn there will
-be information about the code you selected in the form of:
-'Turn ?/12: Your guess [your code] - Exact matches: ?, Color matches: ?'
-The exact matches means that you found both the correct color
-and in the correct position, while the color matches means that
-you found the correct color but in the wrong position. "
+  def self.rules
+    puts <<~RULES
+      ----------------- MASTERMIND GAME ------------------
+      This game consists of a codemaker and a codebreaker. 
+      First you choose the role you want to play. The code
+      is a 4 colored-peg which can consist of the next 6 colors:
+      'CYAN', 'MAGENTA', 'BLUE', 'GREEN', 'YELLOW', 'GREY'.
+      There will be 12 turns and each turn there will be 
+      information about the code. Red pegs show that there is
+      a correct color peg and in the correct position while white
+      pegs show that there is a correct color but in the wrong 
+      position.
+    RULES
   end
 
   def self.show_board(guesses_info, turn, role)
